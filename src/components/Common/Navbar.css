@@ -1,0 +1,19 @@
+.custom-navbar {
+    background-color: #01008A;
+}
+
+.navbar,
+.nav-link,
+.navbar-brand,
+.btn {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.navbar .navbar-brand {
+    color : white;
+}
+
+.navbar .nav-link {
+    color : white;
+}
