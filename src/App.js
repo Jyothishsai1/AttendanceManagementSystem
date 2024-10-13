@@ -34,9 +34,9 @@ const App = () => {
             
             {/* Protected Routes */}
             <Route >
-              <Route path="/student/dashboard" element={<StudentDashboard />} />
-              <Route path="/teacher/dashboard" element={<TeacherDashboard />} />
-              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route path="/student/dashboard" element={<EnrollCourse />} />
+              <Route path="/teacher/dashboard" element={<CreateCourse />} />
+              <Route path="/admin/dashboard" element={<ManageUsers />} />
               <Route path="/admin/manage-users" element={<ManageUsers />} />
               <Route path="/student/attendance" element={<AttendanceView />} />
               <Route path="/student/enroll-courses" element={<EnrollCourse />} />

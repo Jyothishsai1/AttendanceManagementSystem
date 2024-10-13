@@ -16,7 +16,7 @@ const Login = () => {
     try {
       setError('');
       await login(email, password); // Firebase authentication login
-      navigate('/dashboard');
+      navigate('/edit-profile');
     } catch {
       setError('Failed to log in');
     }
