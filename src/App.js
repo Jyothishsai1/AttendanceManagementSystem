@@ -10,7 +10,6 @@ import EditProfile from './components/Auth/EditProfile';
 import StudentDashboard from './Student/ViewCourses'; // You can replace this with the actual dashboard
 import TeacherDashboard from './Teacher/AttendanceHistory'; // Placeholder for Teacher Dashboard
 import AdminDashboard from './Admin/ManageUsers'; // Placeholder for Admin Dashboard
-import AttendanceView from './Student/AttendanceView'; // Attendance view for students
 import CreateCourse from './Teacher/CreateCourse'; // Course creation for teachers
 import PrivateRoute from './routes/PrivateRoute'; // For private routes
 import RoleBasedRoute from './routes/RoleBasedRoute'; // For role-based routing
@@ -19,6 +18,15 @@ import EnrollCourse from './Student/EnrollCourse';
 import ViewCourses from './Student/ViewCourses';
 import ScheduleMeeting from './Teacher/ScheduleMeeting';
 import ManageUsers from './Admin/ManageUsers';
+import AttendanceHistory from './Teacher/AttendanceHistory';
+import GenerateAttendanceReport from './Teacher/GenerateAttendanceReport';
+import AttendanceView from './Student/AttendanceView';
+import MeetingSchedule from './Student/MeetingSchedule';
+import Statistics from './Admin/Statistics';
+import EmailNotifications from './Admin/EmailNotifications';
+import Announcements from './Teacher/Announcements';
+import ViewAnnouncements from './Student/ViewAnnouncements';
+
 
 const App = () => {
   return (
@@ -38,11 +46,19 @@ const App = () => {
               <Route path="/teacher/dashboard" element={<CreateCourse />} />
               <Route path="/admin/dashboard" element={<ManageUsers />} />
               <Route path="/admin/manage-users" element={<ManageUsers />} />
-              <Route path="/student/attendance" element={<AttendanceView />} />
+              <Route path="/admin/statistics" element={<Statistics />} />
+              <Route path="/admin/email-notifications" element={<EmailNotifications />} />
               <Route path="/student/enroll-courses" element={<EnrollCourse />} />
               <Route path="/student/view-courses" element={<ViewCourses />} />
+              <Route path="/student/view-attendance" element={<AttendanceView />} />
+              <Route path="/student/meeting-schedule" element={<MeetingSchedule />} />
+              <Route path="/student/view-announcements" element={<ViewAnnouncements />} />
               <Route path="/teacher/create-course" element={<CreateCourse />} />
               <Route path="/teacher/mark-attendance" element={<MarkAttendance />} />
+              <Route path="/teacher/schedule-meeting" element={<ScheduleMeeting />} />
+              <Route path="/teacher/attendance-history" element={<AttendanceHistory />} />
+              <Route path="/teacher/generate-report" element={<GenerateAttendanceReport />} />
+              <Route path="/teacher/announcements" element={<Announcements />} />
               {/* Add other protected routes as needed */}
             </Route>
           </Routes>

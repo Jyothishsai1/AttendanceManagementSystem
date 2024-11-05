@@ -1,30 +1,84 @@
-// src/components/Student/AttendanceView.js
 import React, { useState, useEffect } from 'react';
 import { db } from '../firebase/config';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
 import { useAuth } from '../context/AuthContext';
-import Calendar from '../components/Common/Calendar'; // Assuming you have a Calendar component
+import AttendanceCalendar from '../components/Common/Calendar'; // Updated import
 
 const AttendanceView = () => {
   const { currentUser } = useAuth();
   const [attendanceData, setAttendanceData] = useState([]);
+  const [courses, setCourses] = useState([]);
+  const [selectedCourse, setSelectedCourse] = useState('');
 
   useEffect(() => {
-    const fetchAttendanceData = async () => {
+    const fetchCoursesAndAttendance = async () => {
       const userRef = doc(db, 'users', currentUser.uid);
       const userSnap = await getDoc(userRef);
+      
       if (userSnap.exists()) {
-        setAttendanceData(userSnap.data().attendance || []); // Adjust according to your data structure
+        const userData = userSnap.data();
+        const enrolledCourses = userData.enrolledCourses || [];
+
+        // Fetch courses and filter based on enrolled courses
+        const courseSnapshot = await getDocs(collection(db, 'courses'));
+        const coursesMap = {};
+        
+        courseSnapshot.docs.forEach(doc => {
+          if (enrolledCourses.includes(doc.id)) {
+            coursesMap[doc.id] = doc.data().courseName;
+          }
+        });
+
+        setCourses(coursesMap);
+
+        // Fetch attendance data
+        const attendance = userData.attendance || {};
+        const attendanceArray = [];
+
+        for (const courseId in attendance) {
+          const courseAttendance = attendance[courseId];
+          for (const date in courseAttendance) {
+            attendanceArray.push({
+              courseId,
+              date,
+              status: courseAttendance[date],
+            });
+          }
+        }
+        setAttendanceData(attendanceArray);
       }
     };
 
-    fetchAttendanceData();
+    fetchCoursesAndAttendance();
   }, [currentUser]);
 
   return (
     <div className="container">
-      <h2>Your Attendance</h2>
-      <Calendar attendanceData={attendanceData} />
+      <h2 className='text-center mt-5'>Your Attendance</h2>
+      <div className='row'>
+      <div className='col-2'></div>
+      <div className='col-8'>
+      <div className="form-group">
+        <label>Select Course</label>
+        <select
+          className="form-control"
+          value={selectedCourse}
+          onChange={(e) => setSelectedCourse(e.target.value)}
+        >
+          <option value="">Select Course</option>
+          {Object.entries(courses).map(([id, name]) => (
+            <option key={id} value={id}>{name}</option>
+          ))}
+        </select>
+      </div>
+      </div>
+      <div className='col-2'></div>
+      </div>
+      {selectedCourse && (
+        <AttendanceCalendar 
+          attendanceData={attendanceData.filter(record => record.courseId === selectedCourse)} 
+        />
+      )}
     </div>
   );
 };

@@ -1,34 +1,26 @@
+// src/components/Common/FullCalendar.js
 import React, { useState, useEffect } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import '@fullcalendar/common/main.css';
+import '@fullcalendar/daygrid/main.css';
 import '../../styles/Calendar.css'; // Custom styles if needed
 
 const AttendanceCalendar = ({ attendanceData }) => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    // Update events whenever attendanceData changes
-    const newEvents = attendanceData.map(record => ({
-      title: record.status,
-      start: record.date,
-      allDay: true,
-      color: record.status === 'Present' ? 'green' : record.status === 'Absent' ? 'red' : 'black',
+    const formattedEvents = attendanceData.map(entry => ({
+      title: entry.status,
+      date: entry.date,
+      className: entry.status === 'Present' ? 'success' : 'important', // You can add more classes for different statuses
     }));
-
-    setEvents(newEvents);
+    setEvents(formattedEvents);
   }, [attendanceData]);
 
   const handleDateClick = (arg) => {
-    // const title = prompt('Enter Attendance Status (Present/Absent):');
-    // if (title) {
-    //   const newEvent = {
-    //     title,
-    //     start: arg.dateStr,
-    //     allDay: true,
-    //   };
-    //   setEvents([...events, newEvent]);
-    // }
+    alert(`Date: ${arg.dateStr}`);
   };
 
   return (
@@ -41,8 +33,9 @@ const AttendanceCalendar = ({ attendanceData }) => {
         headerToolbar={{
           left: 'prev,next today',
           center: 'title',
-          right: 'dayGridMonth',
+          right: 'dayGridMonth,dayGridWeek,dayGridDay'
         }}
+        editable={true}
       />
     </div>
   );

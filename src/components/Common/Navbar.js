@@ -1,14 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import './Navbar.css';  // Assuming you're adding CSS here.
+import './Navbar.css';
 import Style from '../../styles/App.css';
 
 const Navbar = () => {
   const { currentUser, userRole, logout } = useAuth();
+  const navigate = useNavigate(); // Use useNavigate for redirection
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    await logout(); // Ensure logout is completed
+    navigate('/login'); // Redirect to login page after logout
   };
 
   return (
@@ -21,7 +23,6 @@ const Navbar = () => {
 
         <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul className="navbar-nav">
-            
             {currentUser && userRole === 'teacher' && (
               <>
                 <li className="nav-item">
@@ -32,6 +33,9 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/teacher/attendance-history">Attendance History</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/teacher/generate-report">Generate Report</Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/teacher/schedule-meeting">Schedule Meetings</Link>
@@ -56,6 +60,9 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/student/view-attendance">View Attendance</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/student/view-announcements">Course Announcements</Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/student/meeting-schedule">Meeting Schedule</Link>

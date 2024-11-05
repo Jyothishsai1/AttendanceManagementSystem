@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { db } from '../firebase/config';
 import { collection, getDocs, addDoc } from 'firebase/firestore';
 import { useAuth } from '../context/AuthContext';
+import SchedulePNG from '../assets/schedule.png';
 
 const ScheduleMeeting = () => {
   const [courses, setCourses] = useState([]);
@@ -19,7 +20,7 @@ const ScheduleMeeting = () => {
       const coursesRef = collection(db, 'courses');
       const courseSnapshot = await getDocs(coursesRef);
       const teacherCourses = courseSnapshot.docs
-        .filter((doc) => doc.data().teacherId === currentUser.uid)
+        .filter((doc) => doc.data().createdBy === currentUser.email)
         .map((doc) => ({ id: doc.id, ...doc.data() }));
       setCourses(teacherCourses);
     };
@@ -43,7 +44,9 @@ const ScheduleMeeting = () => {
 
   return (
     <div className="container">
-      <h2>Schedule Meeting</h2>
+      <h2 className="text-center m-5">Schedule Meeting</h2>
+      <div className='row'>
+      <div className='col-8 '>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Select Course</label>
@@ -90,11 +93,19 @@ const ScheduleMeeting = () => {
             required
           />
         </div>
+        <div className="form-group">
         <button type="submit" className="btn btn-primary mt-3">
           Schedule Meeting
         </button>
+        </div>
       </form>
+      </div>
+      <div className='col-4'>
+      <img className="CourseImage" src={SchedulePNG} alt-text="Attendance Image" />
+      </div>
+      </div>
     </div>
+    
   );
 };
 

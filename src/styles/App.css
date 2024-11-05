@@ -228,3 +228,81 @@ h6{
 .ModalContainer .form-group {
     width: 100%;
 }
+
+/* src/styles/Calendar.css */
+
+.present {
+    background-color: green !important;
+    /* Change color for present */
+    color: white;
+    /* Text color for contrast */
+}
+
+.absent {
+    background-color: red !important;
+    /* Change color for absent */
+    color: white;
+    /* Text color for contrast */
+}
+
+/* Custom styles for the calendar */
+.fc {
+    max-width: 900px;
+    /* Adjust the width as needed */
+    margin: 0 auto;
+    /* Center the calendar */
+}
+
+.fc-daygrid-day {
+    cursor: pointer;
+    /* Change cursor on hover */
+}
+
+.fc-daygrid-day:hover {
+    background-color: #f0f0f0;
+    /* Light gray on hover */
+}
+
+.fc-event {
+    font-size: 14px;
+    /* Font size for events */
+}
+
+.fc-daygrid-day.fc-day-today {
+    background-color: #d1e7dd;
+    /* Light green background for today */
+}
+
+.fc {
+    transform: scale(0.9);
+    /* Scale down the entire calendar */
+    transform-origin: top left;
+    /* Set the origin point for scaling */
+}
+
+.meeting-details {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    background: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.join-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #03a9f3;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.join-button:hover {
+    background-color: #0288d1;
+}
