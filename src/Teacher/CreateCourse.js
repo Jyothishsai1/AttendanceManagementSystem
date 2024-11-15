@@ -31,8 +31,9 @@ const CreateCourse = () => {
         <div className="col-7">
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label>Course Name</label>
+              <label htmlFor='name'>Course Name</label>
               <input
+                id='name'
                 type="text"
                 className="form-control"
                 value={courseName}
@@ -42,8 +43,9 @@ const CreateCourse = () => {
               />
             </div>
             <div className="form-group">
-              <label>Course Description</label>
+              <label htmlFor='desc'>Course Description</label>
               <input
+                id='desc'
                 type="text"
                 className="form-control"
                 value={description}
@@ -53,8 +55,9 @@ const CreateCourse = () => {
               />
             </div>
             <div className="form-group">
-              <label>Course Duration (in weeks)</label>
+              <label htmlFor='duration'>Course Duration (in weeks)</label>
               <input
+                id='duration'
                 type="number"
                 className="form-control"
                 value={duration}

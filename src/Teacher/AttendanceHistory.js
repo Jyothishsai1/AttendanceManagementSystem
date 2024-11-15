@@ -100,8 +100,9 @@ const AttendanceHistory = () => {
       <div className='row'>
         <div className='col-7'>
           <div className="form-group">
-            <label>Select Student</label>
+            <label htmlFor='student'>Select Student</label>
             <select
+              id='student'
               className="form-control"
               value={selectedStudent}
               onChange={(e) => setSelectedStudent(e.target.value)}

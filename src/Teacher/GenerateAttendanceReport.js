@@ -87,8 +87,9 @@ const GenerateAttendanceReport = () => {
         <div className="col-2"></div>
         <div className='col-8'>
           <div className="form-group">
-            <label>Select Course</label>
+            <label htmlFor='course'>Select Course</label>
             <select
+              id='course'
               className="form-control"
               value={selectedCourse}
               onChange={(e) => {

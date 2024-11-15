@@ -98,11 +98,11 @@ const AttendanceCharts = () => {
       <div style={{ display: 'flex', justifyContent: 'space-around' }}>
         <div>
           <h3>Teachers vs Students</h3>
-          <Pie data={pieData} />
+          <Pie data={pieData} aria-label='piechart'/>
         </div>
         <div>
           <h3>Overall Attendance by Course (Month-wise)</h3>
-          <Bar data={overallAttendanceData} options={{ scales: { y: { beginAtZero: true } } }} />
+          <Bar data={overallAttendanceData} options={{ scales: { y: { beginAtZero: true } } }} aria-label='bar chart'/>
         </div>
       </div>
     </div>

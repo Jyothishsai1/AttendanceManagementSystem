@@ -48,8 +48,9 @@ const Register = () => {
       {error && <p className="text-danger">{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Name</label>
+          <label htmlFor="name">Name</label>
           <input 
+            id="name"
             type="text" 
             className="form-control" 
             value={name} 
@@ -58,8 +59,9 @@ const Register = () => {
           />
         </div>
         <div className="form-group">
-          <label>Email</label>
+          <label htmlFor="email">Email</label>
           <input 
+            id="email"
             type="email" 
             className="form-control" 
             value={email} 
@@ -68,8 +70,9 @@ const Register = () => {
           />
         </div>
         <div className="form-group">
-          <label>Role</label>
-          <select 
+          <label htmlFor="role">Role</label>
+          <select
+            id="role" 
             className="form-control" 
             value={role} 
             onChange={(e) => setRole(e.target.value)} 
@@ -80,8 +83,9 @@ const Register = () => {
           </select>
         </div>
         <div className="form-group">
-          <label>Date of Birth</label>
-          <input 
+          <label htmlFor="dob">Date of Birth</label>
+          <input
+            id="dob" 
             type="date" 
             className="form-control" 
             value={dob} 
@@ -90,8 +94,9 @@ const Register = () => {
           />
         </div>
         <div className="form-group">
-          <label>Password</label>
+          <label htmlFor='password'>Password</label>
           <input 
+            id='password'
             type="password" 
             className="form-control" 
             value={password} 
@@ -100,8 +105,9 @@ const Register = () => {
           />
         </div>
         <div className="form-group">
-          <label>Confirm Password</label>
+          <label htmlFor="conPassword">Confirm Password</label>
           <input 
+            id="conPassword"
             type="password" 
             className="form-control" 
             value={confirmPassword} 

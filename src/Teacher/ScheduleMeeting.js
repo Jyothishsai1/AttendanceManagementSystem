@@ -49,8 +49,9 @@ const ScheduleMeeting = () => {
       <div className='col-8 '>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Select Course</label>
+          <label htmlFor='course'>Select Course</label>
           <select
+            id='course'
             className="form-control"
             value={meetingInfo.courseId}
             onChange={(e) => setMeetingInfo({ ...meetingInfo, courseId: e.target.value })}
@@ -65,8 +66,9 @@ const ScheduleMeeting = () => {
           </select>
         </div>
         <div className="form-group">
-          <label>Meeting Link</label>
+          <label htmlFor='link'>Meeting Link</label>
           <input
+            id='link'
             type="url"
             className="form-control"
             value={meetingInfo.meetingLink}
@@ -75,8 +77,9 @@ const ScheduleMeeting = () => {
           />
         </div>
         <div className="form-group">
-          <label>Meeting Details</label>
+          <label htmlFor='details'>Meeting Details</label>
           <textarea
+            id='details'
             className="form-control"
             value={meetingInfo.meetingDetails}
             onChange={(e) => setMeetingInfo({ ...meetingInfo, meetingDetails: e.target.value })}
@@ -84,8 +87,9 @@ const ScheduleMeeting = () => {
           ></textarea>
         </div>
         <div className="form-group">
-          <label>Meeting Date</label>
+          <label htmlFor='date'>Meeting Date</label>
           <input
+            id='date'
             type="date"
             className="form-control"
             value={meetingInfo.meetingDate}
@@ -101,7 +105,7 @@ const ScheduleMeeting = () => {
       </form>
       </div>
       <div className='col-4'>
-      <img className="CourseImage" src={SchedulePNG} alt-text="Attendance Image" />
+      <img className="CourseImage" src={SchedulePNG} alt="Schedule Image" />
       </div>
       </div>
     </div>

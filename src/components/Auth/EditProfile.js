@@ -38,8 +38,9 @@ const EditProfile = () => {
       <h2>Edit Profile</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Name</label>
-          <input 
+          <label htmlFor='name'>Name</label>
+          <input
+            id='name' 
             type="text" 
             className="form-control" 
             value={userData.name} 
@@ -48,8 +49,9 @@ const EditProfile = () => {
           />
         </div>
         <div className="form-group">
-          <label>Date of Birth</label>
+          <label htmlFor='dob'>Date of Birth</label>
           <input 
+            id='dob'
             type="date" 
             className="form-control" 
             value={userData.dob} 

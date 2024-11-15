@@ -66,8 +66,9 @@ const MarkAttendance = () => {
       <div className='row'>
       <div className='col-7'>
       <div className="form-group">
-        <label>Select Course</label>
+        <label htmlFor='course'>Select Course</label>
         <select
+          id='course'
           className="form-control"
           value={selectedCourse}
           onChange={(e) => setSelectedCourse(e.target.value)}
@@ -120,7 +121,7 @@ const MarkAttendance = () => {
       )}
       </div>
       <div className='col-4'>
-      <img className="CourseImage" src={AttendancePNG} alt-text="Attendance Image" />
+      <img className="CourseImage" src={AttendancePNG} alt="Attendance Image" />
       </div>
       </div>
     </div>

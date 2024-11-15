@@ -82,10 +82,10 @@ const MeetingSchedule = () => {
         }}
         height="600px"
         eventContent={(eventInfo) => (
-          <div style={{ cursor: 'pointer' }}>
-            <strong>{eventInfo.event.title}</strong>
-          </div>
-        )}
+    <div style={{ cursor: 'pointer', backgroundColor: '#01008A' }}> {/* Dark blue color applied here */}
+      <strong>{eventInfo.event.title}</strong>
+    </div>
+  )}
       />
 
       <Modal show={!!selectedMeeting} onHide={handleCloseModal}>

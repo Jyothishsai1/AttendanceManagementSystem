@@ -52,8 +52,9 @@ console.log(currentUser);
       <div className='col-8'>
       <form onSubmit={handleSubmit} className="ms-auto">
         <div className="form-group">
-          <label>Select Course</label>
+          <label htmlFor='course'>Select Course</label>
           <select
+            id='course'
             className="form-control"
             value={selectedCourse}
             onChange={(e) => setSelectedCourse(e.target.value)}
@@ -68,8 +69,9 @@ console.log(currentUser);
           </select>
         </div>
         <div className="form-group">
-          <label>Announcement</label>
+          <label htmlFor='announcements'>Announcement</label>
           <textarea
+            id='announcements'
             className="form-control"
             rows="4"
             value={announcement}
